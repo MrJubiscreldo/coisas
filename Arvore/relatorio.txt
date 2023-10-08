@@ -1,6 +1,6 @@
-A arvore binaria nao balanceada executa mais rapido quando se insere dados nela, 
-isso porque ela nao precisa ser balanceada e nao gasta recursos se balanceando. 
-No entanto a arvore balanceada remove e busca dados de maneira mais eficiente, 
+A arvore binaria nao balanceada executa mais rapido quando se insere poucos dados nela, 
+isso porque ela nao gasta recursos se balanceando. 
+No entanto a arvore balanceada mais eficiente com quantias grandes de dados, 
 pois ela não desperdiça espaço com ramos desnecessariamente longos o que
 torna a travesia dela mais curta.
 
