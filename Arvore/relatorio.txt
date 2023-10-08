@@ -1,0 +1,43 @@
+A arvore binaria nao balanceada executa mais rapido quando se insere dados nela, 
+isso porque ela nao precisa ser balanceada e nao gasta recursos se balanceando. 
+No entanto a arvore balanceada remove e busca dados de maneira mais eficiente, 
+pois ela não desperdiça espaço com ramos desnecessariamente longos o que
+torna a travesia dela mais curta.
+
+resultados obtidos:
+
+arvBinaria inserir 100: 514693
+arvBinaria inserir 500: 76244055
+arvBinaria inserir 1000: 2001305
+arvBinaria inserir 10000: 30486726
+arvBinaria inserir 20000: 34362141
+
+arvAVL inserir 100: 704429
+arvAVL inserir 500: 564554
+arvAVL inserir 1000: 704363
+arvAVL inserir 10000: 2847383
+arvAVL inserir 20000: 47054218
+
+arvBinaria buscar 100: 330287
+arvBinaria buscar 500: 2189272
+arvBinaria buscar 1000: 2907658
+arvBinaria buscar 10000: 17287068
+arvBinaria buscar 20000: 118176317
+
+arvAVL buscar 100: 72562
+arvAVL buscar 500: 1522345
+arvAVL buscar 1000: 1772777
+arvAVL buscar 10000: 4917794
+arvAVL buscar 20000: 8787613
+
+arvBinaria remover 100: 423872
+arvBinaria remover 500: 1542760
+arvBinaria remover 1000: 82031392
+arvBinaria remover 10000: 285762974
+arvBinaria remover 20000: 433119373
+
+arvAVL remover 100: 145448
+arvAVL remover 500: 785306
+arvAVL remover 1000: 861567
+arvAVL remover 10000: 71872889
+arvAVL remover 20000: 23084876
