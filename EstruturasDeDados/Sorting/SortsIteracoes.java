@@ -10,20 +10,16 @@ public class SortsIteracoes {
     public int bubbleSort(int[] vetor) {
         int n = tamanho(vetor);
         int temp = 0;
-        int i=0;
-        int j=1;
-        int troca = 0;
-        for (; i<n; i++) {
-            for(; j<(n-i); j++) {
+        for (int i=0; i<n; i++) {
+            for(int j=0; j<(n-i); j++) {
                 if (vetor[j - 1] > vetor[j]) {
-                    troca++;
                     temp = vetor[j-1];
                     vetor[j-1] = vetor[j];
                     vetor[j] = temp;   
                 }       
             }
         }
-        return (i+1)*j;
+        return n*(n-1);
     }
 
     public int mergeSort(int[] vetor) {
