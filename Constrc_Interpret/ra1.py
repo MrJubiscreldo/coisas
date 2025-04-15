@@ -1,49 +1,84 @@
-terminal = r'^([0-9])([0-9a-z]*)$|^(true|false)$'
-nterminal = r'\\wedge|\\vee|\\rightarrow|\\leftrightarrow'
+# Luca Takemura Piccoli
+
+import re
+
+token_specification = [
+  ('LPAREN', r'\('),
+  ('RPAREN', r'\)'),
+  ('OPS', r'\\neg|\\wedge|\\vee|\\rightarrow|\\leftrightarrow'),
+  ('PROPS', r'(true|false)|[0-9][0-9 a-z]*'),
+  ('SKIP', r'[ \t\n]+'),
+  ('MISMATCH', r'.'),
+]
+
+tokens_regex = '|'.join(f'(?P<{name}>{pattern})' for name, pattern in token_specification)
+compiled_regex = re.compile(tokens_regex)
+
+def anal_lex(expr):
+  tokens = []
+  for mo in compiled_regex.finditer(expr):
+    token_type = mo.lastgroup
+    token_value = mo.group(token_type)
+    if token_type == 'SKIP':
+      continue
+    elif token_type == 'MISMATCH':
+      raise InvalidExpr
+    else:
+      tokens.append({'type': token_type, 'value': token_value})
+  return tokens
 
 class InvalidExpr(Exception):
-    pass
+  pass
 
-def formulaunaria(token_index):
-  token_index = formula(token_index)
-
-  if tokens[token_index] != ")":
+def parser(index, tokens):
+  if index >= len(tokens):
     raise InvalidExpr
 
-  return token_index + 1
+  current = tokens[index]
 
-def formulabinaria(token_index):
-  token_index = formula(token_index)
-  token_index = formula(token_index)
-
-  if tokens[token_index] != ")":
-    raise InvalidExpr
-
-  return token_index + 1
-
-def formula(token_index):
-  if tokens[token_index] == "(":
-    token_index += 1
-
-    if tokens[token_index] == r"\neg":
-      token_index = formulaunaria(token_index+1)
-    elif bool(re.fullmatch(nterminal, tokens[token_index])):
-      token_index = formulabinaria(token_index+1)
-    else:
+  if current['type'] == 'LPAREN':
+    index += 1
+    if index >= len(tokens):
       raise InvalidExpr
-  elif bool(re.fullmatch(terminal, tokens[token_index])):
-    return token_index + 1
+    op_token = tokens[index]
+    if op_token['type'] != 'OPS':
+      raise InvalidExpr
+    if op_token['value'] == r'\neg':
+      index += 1
+      index = parser(index, tokens)
+    else:
+      index += 1
+      index = parser(index, tokens)
+      index = parser(index, tokens)
+    if index >= len(tokens) or tokens[index]['type'] != 'RPAREN':
+      raise InvalidExpr
+    return index + 1
+
+  elif current['type'] == 'PROPS':
+    return index + 1
+
   else:
     raise InvalidExpr
-  return token_index
 
+  return index
 
-expr = r"( \wedge 3x ( \leftrightarrow ( \neg 7f ) 5y ) )"
+if __name__ == "__main__":
 
-tokens = expr.split(" ")
+  print("Digite o nome do arquivo: ")
+  filename = input()
 
-try:
-  formula(0)
-  print("Expressao valida.")
-except InvalidExpr as e:
-  print("Expressao invalida.")
+  with open(filename, 'r') as f:
+    n_expr = int(f.readline())
+    for i in range(n_expr):
+      expr = f.readline()
+
+      try:
+        tokens = anal_lex(expr)
+
+        final_index = parser(0, tokens)
+        if final_index != len(tokens):
+          raise InvalidExpr
+        print("Expressao valida.")
+        
+      except InvalidExpr:
+        print("Expressao invalida.")
