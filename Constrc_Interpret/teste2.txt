@@ -1,0 +1,12 @@
+11
+truee
+( \wedge 9 )
+\neg
+( \wedge 8 8j true )
+( \seta false truee )
+( \neg \vee 8 )
+( 1x 1x )
+\neg ( 2x 3y )
+( \wedge ( \vee 2 5 ) )
+\vee
+( \leftrightarrow ( 4 e ) )

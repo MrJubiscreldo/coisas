@@ -1,0 +1,21 @@
+20
+trrue
+false
+( \neg x )
+( \wedge 2 3 )
+( \vee ( \neg 4 ) 5 )
+( \neg ( \vee 6 7 ) )
+( \rightarrow ( \neg 8 ) 9 )
+( \leftrightarrow ( \wedge 10 11 ) ( \vee 12 13 ) )
+( \neg ( \leftrightarrow true false ) )
+( \vee 14 )
+( \wedge 15 )
+\neg 16
+( 17 18 )
+( \neg )
+( \neg ( \neg ( \neg 19 ) ) )
+( \wedge ( \vee 20 21 ) )
+( \rightarrow ( \wedge 22 23 ) )
+( \leftrightarrow ( 24 25 ) )
+( \vee ( \vee ( \vee 26 27 ) 28 ) )
+( \neg ( \rightarrow ( \neg 29 ) ( \wedge 30 31 ) ) )

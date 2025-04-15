@@ -1,0 +1,12 @@
+11
+true
+false
+89
+(\neg 7x)
+( \wedge 4 2 )
+( \vee (\neg 4x )4y )
+( \rightarrow ( \wedge 3a 4b ) (\neg 4c ))
+( \leftrightarrow ( \vee 4p 3f ) (\neg ( \rightarrow 3r 3s )) )
+( \wedge ( \wedge 1p false ) (\neg 1r) )
+(\neg (\leftrightarrow true false ))
+( \rightarrow ( \vee 4x1 4y2 ) ( \wedge 4z3 (\neg 4k4) ) )
