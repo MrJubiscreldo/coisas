@@ -6,7 +6,7 @@ token_specification = [
   ('LPAREN', r'\('),
   ('RPAREN', r'\)'),
   ('OPS', r'\\neg|\\wedge|\\vee|\\rightarrow|\\leftrightarrow'),
-  ('PROPS', r'(true|false)|[0-9][0-9 a-z]*'),
+  ('PROPS', r'(true|false)|[0-9][0-9a-z]*'),
   ('SKIP', r'[ \t\n]+'),
   ('MISMATCH', r'.'),
 ]
@@ -78,7 +78,7 @@ if __name__ == "__main__":
         final_index = parser(0, tokens)
         if final_index != len(tokens):
           raise InvalidExpr
-        print("Expressao valida.")
-        
+        print("valida.")
+
       except InvalidExpr:
-        print("Expressao invalida.")
+        print("inválida.")
